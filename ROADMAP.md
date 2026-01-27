@@ -35,10 +35,9 @@
   - Photo gallery or featured shots
   - Shows personality beyond professional life
 
-- [ ] **Scroll-based Background Darkening**
-  - Background starts at current color (#21212f)
-  - Gradually darkens as user scrolls
-  - Very dark at the footer - creates depth and visual journey
+- [x] **Scroll-based Background Darkening** ✓
+  - Background starts at #21212f, darkens to #0d0d14
+  - Creates depth and visual journey as user scrolls
 
 ### Phase 3 - Progress Tracking & Goals
 
