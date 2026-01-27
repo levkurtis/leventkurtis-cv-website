@@ -21,10 +21,6 @@ export default function About() {
             curiosity and continuous learning, I&apos;m exploring GenAI tools like LM Studio and Ollama outside of
             work.
           </p>
-
-          <p className="text-lg leading-relaxed text-accent font-medium mt-6">
-            Currently looking for a consulting role that values both strategic thinking and technical depth.
-          </p>
         </div>
       </div>
     </section>
