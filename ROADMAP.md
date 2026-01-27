@@ -58,23 +58,32 @@
 
 ## Future Ideas
 
+### UX & Visual Enhancements
+- [ ] **Light/Dark Theme Toggle** - Switch between light and dark mode
+- [ ] **Scroll Animations** - Subtle entrance animations on scroll (Framer Motion)
+- [ ] **Interactive Skills Visualization** - Charts or graphs showing proficiency levels
+- [ ] **Career Timeline View** - Visual timeline as alternative to list view
+
+### Features
 - [ ] **Contact Form** - Let visitors reach out without exposing email
 - [ ] **Blog/Insights Section** - Share thoughts on Data & AI, consulting, career
-- [ ] **SEO Improvements** - Structured data, sitemap, Open Graph images
-- [ ] **Theme Toggle** - Light/dark mode switch
-- [ ] **Animations** - Subtle entrance animations on scroll
-- [ ] **Analytics** - Vercel Analytics or Plausible
 - [ ] **Multi-language Support** - Danish/English toggle
 - [ ] **Testimonials** - Quotes from colleagues or managers
+
+### SEO & Analytics
+- [ ] **SEO Improvements** - Structured data (JSON-LD), sitemap, Open Graph images
+- [ ] **Analytics** - Vercel Analytics or Plausible (privacy-friendly)
 
 ---
 
 ## Technical Improvements
 
-- [ ] Add unit tests (Jest + React Testing Library)
-- [ ] Lighthouse score optimization (aim for 100)
-- [ ] Image optimization (next/image, lazy loading for gallery)
-- [ ] Add loading states and error boundaries
+- [ ] **Unit Tests** - Jest + React Testing Library
+- [ ] **Lighthouse Optimization** - Aim for 100 across all categories
+- [ ] **TypeScript Improvements** - Proper types throughout, strict mode
+- [ ] **Image Optimization** - next/image with proper sizing, lazy loading
+- [ ] **Loading States** - Add loading states and error boundaries
+- [ ] **Code Quality** - ESLint rules, consistent patterns
 
 ---
 
