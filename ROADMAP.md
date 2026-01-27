@@ -12,77 +12,89 @@
 
 ---
 
-## Version 2.0 - Ideas & Features
+## Version 2.0 - Personal Life Hub
 
-### High Priority
+**Vision**: Transform from a CV website into a personal hub - a living document that showcases career, projects, hobbies, and life goals.
 
-- [ ] **Projects Section** - Showcase key projects with descriptions, tech stack, and outcomes
-  - Spotify sentiment analysis project
-  - AI in Danish Marketing research
-  - Automation tools built at work (anonymized)
+### Phase 1 - Visual Polish
 
-- [ ] **Contact Form** - Let visitors reach out without exposing email to scrapers
-  - Options: Formspree, Netlify Forms, or custom API route
+- [ ] **Larger Profile Photo** - Current size too small, increase significantly
+- [ ] **Background Gradient** - Subtle circular gradient in hero (deep blue, not too strong)
+- [ ] **Larger Fonts** - Improve readability across the site
+- [ ] **Merge Internal Initiatives** - Move into main Accenture section (keep collapsible)
 
-- [ ] **SEO Improvements**
-  - Add structured data (JSON-LD) for better Google results
-  - Sitemap generation
-  - Open Graph images for social sharing
+### Phase 2 - New Sections
 
-### Medium Priority
+- [ ] **Projects Section** - Showcase meaningful work beyond job duties
+  - Project title & description
+  - Tech stack / skills used
+  - Outcomes / impact
+  - Links (GitHub, live demo, etc.)
 
+- [ ] **Photography Gallery** - Display photography hobby
+  - Photo gallery or featured shots
+  - Shows personality beyond professional life
+
+- [ ] **Scroll-based Background Darkening**
+  - Background starts at current color (#21212f)
+  - Gradually darkens as user scrolls
+  - Very dark at the footer - creates depth and visual journey
+
+### Phase 3 - Progress Tracking & Goals
+
+- [ ] **Certification Progress Tracking**
+  - Show in-progress certifications alongside completed
+  - Progress indicator (e.g., "40% complete")
+  - Grayed out / different styling for incomplete
+  - Visual progress bar
+
+- [ ] **Goals & Life Tracking**
+  - "Currently working on" section
+  - Career goals with progress
+  - Update-able content about life
+  - Reading list / learning journey
+
+---
+
+## Future Ideas
+
+- [ ] **Contact Form** - Let visitors reach out without exposing email
 - [ ] **Blog/Insights Section** - Share thoughts on Data & AI, consulting, career
-  - MDX support for rich content
-  - Tag/category filtering
-
-- [ ] **Theme Toggle** - Light/dark mode switch for accessibility
-
+- [ ] **SEO Improvements** - Structured data, sitemap, Open Graph images
+- [ ] **Theme Toggle** - Light/dark mode switch
 - [ ] **Animations** - Subtle entrance animations on scroll
-  - Framer Motion or CSS animations
-  - Keep it professional, not distracting
-
-- [ ] **Analytics** - Track visitor engagement
-  - Vercel Analytics (privacy-friendly)
-  - Or Plausible/Umami for self-hosted
-
-### Nice to Have
-
+- [ ] **Analytics** - Vercel Analytics or Plausible
 - [ ] **Multi-language Support** - Danish/English toggle
-  - You're multilingual, could appeal to Danish employers
-
-- [ ] **Testimonials/Recommendations** - Quotes from colleagues or managers
-
-- [ ] **Interactive Skills Visualization** - Charts or graphs showing proficiency
-
-- [ ] **Reading List / Resources** - Books, articles, tools you recommend
-
-- [ ] **Timeline View** - Visual career timeline as alternative to list view
-
-- [ ] **Newsletter Signup** - Build an audience for future content
+- [ ] **Testimonials** - Quotes from colleagues or managers
 
 ---
 
 ## Technical Improvements
 
 - [ ] Add unit tests (Jest + React Testing Library)
-- [ ] Lighthouse score optimization (aim for 100 across the board)
-- [ ] Image optimization (next/image with proper sizing)
+- [ ] Lighthouse score optimization (aim for 100)
+- [ ] Image optimization (next/image, lazy loading for gallery)
 - [ ] Add loading states and error boundaries
-- [ ] Implement proper TypeScript types throughout
 
 ---
 
-## Notes
+## Files to Modify for v2.0
 
-_Add your own ideas below as they come up:_
-
--
+| File | Changes |
+|------|---------|
+| `components/Hero.tsx` | Larger photo, gradient background |
+| `app/globals.css` | Gradient styles, larger fonts, scroll-darkening |
+| `components/Experience.tsx` | Merge Internal Initiatives into Accenture |
+| `components/Certifications.tsx` | Add progress tracking |
+| `components/Projects.tsx` | NEW - Projects section |
+| `components/Photography.tsx` | NEW - Photo gallery |
+| `app/page.tsx` | Add new sections |
 
 ---
 
-## How to Contribute to This Roadmap
+## How to Continue
 
 When working with Claude Code on this project:
-1. Reference this file to pick up where you left off
-2. Move items from "Ideas" to "In Progress" when starting
+1. Say "let's work on the roadmap" or "implement Phase 1"
+2. Reference specific items you want to tackle
 3. Check off completed items with `[x]`
