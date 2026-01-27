@@ -60,7 +60,7 @@ export default function Hero() {
         {/* CTA Buttons */}
         <div className="flex flex-wrap justify-center gap-4">
           <a
-            href="/cv.pdf"
+            href="/levent_kurtis_cv.pdf"
             download
             className="px-6 py-3 bg-accent hover:bg-accent-dark text-background font-medium rounded-lg transition-colors duration-200"
           >

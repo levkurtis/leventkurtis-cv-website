@@ -32,7 +32,7 @@ export default function Footer() {
 
           {/* Download CV Button */}
           <a
-            href="/cv.pdf"
+            href="/levent_kurtis_cv.pdf"
             download
             className="flex items-center gap-2 px-5 py-2.5 bg-accent hover:bg-accent-dark text-background font-medium rounded-lg transition-colors duration-200"
           >
