@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { Analytics } from '@vercel/analytics/react'
 import './globals.css'
 import ScrollBackground from '@/components/ScrollBackground'
 
@@ -24,6 +25,7 @@ export default function RootLayout({
       <body className="antialiased">
         <ScrollBackground />
         {children}
+        <Analytics />
       </body>
     </html>
   )
