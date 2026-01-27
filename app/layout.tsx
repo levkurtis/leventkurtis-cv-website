@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import ScrollBackground from '@/components/ScrollBackground'
 
 export const metadata: Metadata = {
   title: 'Levent Kurtis | Data & AI Leader',
@@ -21,6 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased">
+        <ScrollBackground />
         {children}
       </body>
     </html>
