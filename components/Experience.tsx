@@ -13,6 +13,7 @@ interface Job {
   company: string
   location?: string
   roles: Role[]
+  internalInitiatives?: string[]
 }
 
 const experiences: Job[] = [
@@ -46,6 +47,14 @@ const experiences: Job[] = [
           'Proactively onboarded 2 new team members, training them on client context, system history, and technical tools.',
         ],
       },
+    ],
+    internalInitiatives: [
+      'Founded and lead Accenture\'s partnership with Multicultural Students of CBS, a student organisation at Copenhagen Business School. Manage a team of 6 to drive employer branding, D&I, and talent attraction.',
+      'Organised 3 networking events (30–40+ attendees each) and a case competition (25+ participants) through the partnership.',
+      'Co-lead monthly department community meetings, facilitating industry talks, knowledge sharing, and training sessions.',
+      'Supported end-to-end recruitment for the Tech Talent Program, including CV screening, candidate assessment, and providing hiring recommendations to recruiters.',
+      'Recruited Accenture consultants to participate in a cross-company hackathon in collaboration with DTU.',
+      'Completed Accenture\'s Tech Talent Program, a two-year graduate development program focused on technical consulting skills and professional growth.',
     ],
   },
   {
@@ -94,19 +103,11 @@ const experiences: Job[] = [
   },
 ]
 
-const internalInitiatives = [
-  'Founded and lead Accenture\'s partnership with Multicultural Students of CBS, a student organisation at Copenhagen Business School. Manage a team of 6 to drive employer branding, D&I, and talent attraction.',
-  'Organised 3 networking events (30–40+ attendees each) and a case competition (25+ participants) through the partnership.',
-  'Co-lead monthly department community meetings, facilitating industry talks, knowledge sharing, and training sessions.',
-  'Supported end-to-end recruitment for the Tech Talent Program, including CV screening, candidate assessment, and providing hiring recommendations to recruiters.',
-  'Recruited Accenture consultants to participate in a cross-company hackathon in collaboration with DTU.',
-  'Completed Accenture\'s Tech Talent Program, a two-year graduate development program focused on technical consulting skills and professional growth.',
-]
-
 export default function Experience() {
   const [expandedJobs, setExpandedJobs] = useState<Record<string, boolean>>({
     'Accenture': true,
   })
+  const [showInitiatives, setShowInitiatives] = useState(false)
 
   const toggleJob = (company: string) => {
     setExpandedJobs((prev) => ({
@@ -169,46 +170,48 @@ export default function Experience() {
                       </ul>
                     </div>
                   ))}
+
+                  {/* Internal Initiatives - Only for Accenture */}
+                  {job.internalInitiatives && (
+                    <div className="border-l-2 border-accent/50 pl-4 mt-6">
+                      <button
+                        onClick={() => setShowInitiatives(!showInitiatives)}
+                        className="flex items-center gap-2 mb-3 group"
+                      >
+                        <h4 className="font-semibold text-accent/80 group-hover:text-accent transition-colors">
+                          Internal Initiatives
+                        </h4>
+                        <span className="text-xs text-muted bg-background/50 px-2 py-0.5 rounded">
+                          Leadership, D&I, Community
+                        </span>
+                        <svg
+                          className={`w-4 h-4 text-muted transition-transform duration-200 ${
+                            showInitiatives ? 'rotate-180' : ''
+                          }`}
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </button>
+
+                      {showInitiatives && (
+                        <ul className="space-y-2">
+                          {job.internalInitiatives.map((initiative, idx) => (
+                            <li key={idx} className="text-sm text-foreground/70 flex">
+                              <span className="text-accent/70 mr-2">›</span>
+                              <span>{initiative}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                  )}
                 </div>
               )}
             </div>
           ))}
-
-          {/* Internal Initiatives */}
-          <div className="bg-card border border-border rounded-xl overflow-hidden">
-            <button
-              onClick={() => toggleJob('Internal Initiatives')}
-              className="w-full px-6 py-4 flex items-center justify-between hover:bg-card-hover transition-colors duration-200"
-            >
-              <div className="text-left">
-                <h3 className="text-xl font-semibold">Internal Initiatives @ Accenture</h3>
-                <p className="text-sm text-muted">Leadership, D&I, and Community Building</p>
-              </div>
-              <svg
-                className={`w-5 h-5 text-muted transition-transform duration-200 ${
-                  expandedJobs['Internal Initiatives'] ? 'rotate-180' : ''
-                }`}
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
-
-            {expandedJobs['Internal Initiatives'] && (
-              <div className="px-6 pb-6">
-                <ul className="space-y-2">
-                  {internalInitiatives.map((initiative, idx) => (
-                    <li key={idx} className="text-sm text-foreground/70 flex">
-                      <span className="text-accent mr-2">›</span>
-                      <span>{initiative}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-          </div>
         </div>
       </div>
     </section>

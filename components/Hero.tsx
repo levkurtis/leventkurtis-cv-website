@@ -1,13 +1,18 @@
 export default function Hero() {
   return (
-    <section className="min-h-screen flex items-center justify-center pt-16 px-4">
-      <div className="max-w-4xl mx-auto text-center">
+    <section className="min-h-screen flex items-center justify-center pt-16 px-4 relative overflow-hidden">
+      {/* Background Gradient */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div className="w-[600px] h-[600px] sm:w-[800px] sm:h-[800px] rounded-full bg-accent/5 blur-3xl" />
+      </div>
+
+      <div className="max-w-4xl mx-auto text-center relative z-10">
         {/* Profile Photo */}
-        <div className="mb-8 flex justify-center">
+        <div className="mb-6 flex justify-center">
           <img
             src="/photo.jpg"
             alt="Levent Kurtis"
-            className="w-32 h-32 rounded-full object-cover border-2 border-accent"
+            className="w-44 h-44 sm:w-52 sm:h-52 rounded-full object-cover border-3 border-accent shadow-lg shadow-accent/20"
           />
         </div>
 

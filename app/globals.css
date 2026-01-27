@@ -14,12 +14,20 @@
 
 html {
   scroll-behavior: smooth;
+  font-size: 17px; /* Base font size increase for better readability */
+}
+
+@media (min-width: 640px) {
+  html {
+    font-size: 18px;
+  }
 }
 
 body {
   background-color: var(--color-background);
   color: var(--color-foreground);
   font-family: 'Inter', system-ui, sans-serif;
+  line-height: 1.6;
 }
 
 /* Custom scrollbar */
