@@ -16,12 +16,12 @@
 
 **Vision**: Transform from a CV website into a personal hub - a living document that showcases career, projects, hobbies, and life goals.
 
-### Phase 1 - Visual Polish
+### Phase 1 - Visual Polish ✓
 
-- [ ] **Larger Profile Photo** - Current size too small, increase significantly
-- [ ] **Background Gradient** - Subtle circular gradient in hero (deep blue, not too strong)
-- [ ] **Larger Fonts** - Improve readability across the site
-- [ ] **Merge Internal Initiatives** - Move into main Accenture section (keep collapsible)
+- [x] **Larger Profile Photo** - Increased from w-32 to w-44/w-52
+- [x] **Background Gradient** - Subtle circular gradient in hero (deep blue)
+- [x] **Larger Fonts** - Base font 17px mobile, 18px desktop
+- [x] **Merge Internal Initiatives** - Now collapsible within Accenture section
 
 ### Phase 2 - New Sections
 
