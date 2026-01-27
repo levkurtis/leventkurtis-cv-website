@@ -71,7 +71,7 @@
 
 ### SEO & Analytics
 - [ ] **SEO Improvements** - Structured data (JSON-LD), sitemap, Open Graph images
-- [ ] **Analytics** - Vercel Analytics or Plausible (privacy-friendly)
+- [x] **Analytics** - Vercel Analytics (privacy-friendly, no cookies)
 
 ---
 
