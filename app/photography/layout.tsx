@@ -12,16 +12,16 @@ export default function PhotographyLayout({
         <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <Link
-              href="/photography"
+              href="/"
               className="text-xl font-semibold text-[#1a1a1a] hover:text-[#666] transition-colors"
             >
-              LK Photography
+              LK
             </Link>
             <Link
-              href="/"
+              href="/photography"
               className="text-sm text-[#666] hover:text-[#1a1a1a] transition-colors duration-200"
             >
-              Back to CV
+              All Albums
             </Link>
           </div>
         </nav>
