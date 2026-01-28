@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export const metadata: Metadata = {
   title: 'Photography | Levent Kurtis',
@@ -52,10 +53,12 @@ function AlbumCard({ album }: { album: Album }) {
         {/* Thumbnail image */}
         <div className="absolute inset-0 p-3 sm:p-4">
           <div className="relative w-full h-full overflow-hidden rounded-md shadow-lg group-hover:shadow-2xl transition-shadow duration-500">
-            <img
+            <Image
               src={album.thumbnail}
               alt={album.title}
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              fill
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
             />
           </div>
         </div>
