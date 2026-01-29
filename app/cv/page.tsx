@@ -2,10 +2,11 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Hero from '@/components/Hero'
 import About from '@/components/About'
-import Experience from '@/components/Experience'
+import CareerTimeline from '@/components/CareerTimeline'
 import Skills from '@/components/Skills'
 import Certifications from '@/components/Certifications'
 import Education from '@/components/Education'
+import ThemeToggle from '@/components/ThemeToggle'
 
 export const metadata: Metadata = {
   title: 'CV | Levent Kurtis',
@@ -55,15 +56,19 @@ export default function CVPage() {
                 </svg>
                 CV
               </a>
+              <ThemeToggle />
             </div>
 
-            {/* Back to Home (mobile) */}
-            <Link
-              href="/"
-              className="md:hidden text-sm text-muted hover:text-foreground transition-colors"
-            >
-              Home
-            </Link>
+            {/* Mobile: Home link + Theme Toggle */}
+            <div className="md:hidden flex items-center gap-2">
+              <Link
+                href="/"
+                className="text-sm text-muted hover:text-foreground transition-colors"
+              >
+                Home
+              </Link>
+              <ThemeToggle />
+            </div>
           </div>
         </nav>
       </header>
@@ -71,7 +76,7 @@ export default function CVPage() {
       <main>
         <Hero />
         <About />
-        <Experience />
+        <CareerTimeline />
         <Skills />
         <Certifications />
         <Education />
