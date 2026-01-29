@@ -65,12 +65,12 @@ function AlbumCard({ album }: { album: Album }) {
 
         {/* Title overlay */}
         <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6">
-          <div className="bg-white/90 backdrop-blur-sm rounded-lg px-4 py-3 shadow-sm">
-            <h3 className="text-lg sm:text-xl font-semibold text-[#1a1a1a]">
+          <div className="bg-card/90 backdrop-blur-sm rounded-lg px-4 py-3 shadow-sm">
+            <h3 className="text-lg sm:text-xl font-semibold text-foreground">
               {album.title}
             </h3>
             {album.subtitle && (
-              <p className="text-sm text-[#666]">{album.subtitle}</p>
+              <p className="text-sm text-muted">{album.subtitle}</p>
             )}
           </div>
         </div>
@@ -85,10 +85,10 @@ export default function PhotographyPage() {
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12 sm:mb-16">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-[#1a1a1a]">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-foreground">
             Photography
           </h1>
-          <p className="text-lg text-[#666] max-w-2xl mx-auto">
+          <p className="text-lg text-muted max-w-2xl mx-auto">
             A collection of moments captured through my lens while exploring the world.
           </p>
         </div>
@@ -102,7 +102,7 @@ export default function PhotographyPage() {
 
         {/* Empty state hint for future */}
         {albums.length === 1 && (
-          <p className="text-center text-[#999] mt-12 text-sm">
+          <p className="text-center text-muted mt-12 text-sm">
             More albums coming soon...
           </p>
         )}

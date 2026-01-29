@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
+import ThemeToggle from '@/components/ThemeToggle'
 
 export const metadata: Metadata = {
   title: 'Levent Kurtis | Data & AI Leader',
@@ -105,14 +107,22 @@ function SectionCard({ section }: { section: Section }) {
 export default function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground">
+      {/* Theme Toggle - Fixed position */}
+      <div className="fixed top-4 right-4 z-50">
+        <ThemeToggle />
+      </div>
+
       {/* Main Content */}
       <main className="min-h-screen flex flex-col items-center justify-center px-4 py-20">
         <div className="max-w-4xl mx-auto text-center">
           {/* Profile */}
           <div className="mb-8">
-            <img
+            <Image
               src="/photo.jpg"
               alt="Levent Kurtis"
+              width={160}
+              height={160}
+              priority
               className="w-32 h-32 sm:w-40 sm:h-40 rounded-full object-cover border-2 border-accent shadow-lg shadow-accent/20 mx-auto mb-6"
             />
             <h1 className="text-4xl sm:text-5xl font-bold mb-3">Levent Kurtis</h1>

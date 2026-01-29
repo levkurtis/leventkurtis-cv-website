@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import ThemeToggle from '@/components/ThemeToggle'
 
 export default function ProjectsLayout({
   children,
@@ -17,12 +18,15 @@ export default function ProjectsLayout({
             >
               LK
             </Link>
-            <Link
-              href="/projects"
-              className="text-sm text-muted hover:text-foreground transition-colors duration-200"
-            >
-              All Projects
-            </Link>
+            <div className="flex items-center gap-2">
+              <Link
+                href="/projects"
+                className="text-sm text-muted hover:text-foreground transition-colors duration-200"
+              >
+                All Projects
+              </Link>
+              <ThemeToggle />
+            </div>
           </div>
         </nav>
       </header>

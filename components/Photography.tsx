@@ -198,8 +198,8 @@ function TextRightSpread({ spread, onImageClick }: { spread: Extract<Spread, { t
         />
       </div>
       <div className="flex flex-col justify-center">
-        <h4 className="text-2xl md:text-3xl font-semibold mb-4 text-[#1a1a1a]">{spread.title}</h4>
-        <p className="text-lg leading-relaxed text-[#444]">{spread.text}</p>
+        <h4 className="text-2xl md:text-3xl font-semibold mb-4 text-foreground">{spread.title}</h4>
+        <p className="text-lg leading-relaxed text-muted">{spread.text}</p>
       </div>
     </div>
   )
@@ -209,8 +209,8 @@ function TextLeftSpread({ spread, onImageClick }: { spread: Extract<Spread, { ty
   return (
     <div className="mb-16 grid md:grid-cols-2 gap-8 items-center">
       <div className="flex flex-col justify-center order-2 md:order-1">
-        <h4 className="text-2xl md:text-3xl font-semibold mb-4 text-[#1a1a1a]">{spread.title}</h4>
-        <p className="text-lg leading-relaxed text-[#444]">{spread.text}</p>
+        <h4 className="text-2xl md:text-3xl font-semibold mb-4 text-foreground">{spread.title}</h4>
+        <p className="text-lg leading-relaxed text-muted">{spread.text}</p>
       </div>
       <div
         className="relative aspect-[4/5] overflow-hidden rounded-xl shadow-lg order-1 md:order-2 cursor-pointer group"
@@ -244,7 +244,7 @@ function FullWidthSpread({ spread, onImageClick }: { spread: Extract<Spread, { t
         />
       </div>
       {spread.caption && (
-        <p className="mt-4 text-center text-[#666] italic">{spread.caption}</p>
+        <p className="mt-4 text-center text-muted italic">{spread.caption}</p>
       )}
     </div>
   )
@@ -271,7 +271,7 @@ function GridQuoteSpread({ spread, onImageClick }: { spread: Extract<Spread, { t
         ))}
       </div>
       <blockquote className="text-center py-8 px-4">
-        <p className="text-2xl md:text-3xl font-light italic text-[#333]">&ldquo;{spread.quote}&rdquo;</p>
+        <p className="text-2xl md:text-3xl font-light italic text-foreground">&ldquo;{spread.quote}&rdquo;</p>
       </blockquote>
       <div className="grid grid-cols-2 gap-4">
         {spread.images.slice(2, 4).map((img, i) => (
@@ -315,7 +315,7 @@ function DuoSpread({ spread, onImageClick }: { spread: Extract<Spread, { type: '
         ))}
       </div>
       {spread.caption && (
-        <p className="mt-4 text-center text-[#666] italic">{spread.caption}</p>
+        <p className="mt-4 text-center text-muted italic">{spread.caption}</p>
       )}
     </div>
   )

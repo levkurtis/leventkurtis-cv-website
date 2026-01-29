@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import ThemeToggle from '@/components/ThemeToggle'
 
 export default function PhotographyLayout({
   children,
@@ -6,23 +7,26 @@ export default function PhotographyLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className="min-h-screen bg-[#f8f7f4] text-[#1a1a1a]">
+    <div className="min-h-screen bg-background text-foreground">
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#f8f7f4]/95 backdrop-blur-sm border-b border-[#e5e5e5]">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
         <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <Link
               href="/"
-              className="text-xl font-semibold text-[#1a1a1a] hover:text-[#666] transition-colors"
+              className="text-xl font-semibold text-foreground hover:text-muted transition-colors"
             >
               LK
             </Link>
-            <Link
-              href="/photography"
-              className="text-sm text-[#666] hover:text-[#1a1a1a] transition-colors duration-200"
-            >
-              All Albums
-            </Link>
+            <div className="flex items-center gap-2">
+              <Link
+                href="/photography"
+                className="text-sm text-muted hover:text-foreground transition-colors duration-200"
+              >
+                All Albums
+              </Link>
+              <ThemeToggle />
+            </div>
           </div>
         </nav>
       </header>
@@ -32,8 +36,8 @@ export default function PhotographyLayout({
       </main>
 
       {/* Footer */}
-      <footer className="py-8 px-4 text-center text-sm text-[#999] border-t border-[#e5e5e5]">
-        <Link href="/" className="hover:text-[#1a1a1a] transition-colors">
+      <footer className="py-8 px-4 text-center text-sm text-muted border-t border-border">
+        <Link href="/" className="hover:text-foreground transition-colors">
           leventkurtis.com
         </Link>
       </footer>

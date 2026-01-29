@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import ThemeToggle from '@/components/ThemeToggle'
 
 export default function GoalsLayout({
   children,
@@ -17,12 +18,15 @@ export default function GoalsLayout({
             >
               LK
             </Link>
-            <Link
-              href="/goals"
-              className="text-sm text-muted hover:text-foreground transition-colors duration-200"
-            >
-              All Goals
-            </Link>
+            <div className="flex items-center gap-2">
+              <Link
+                href="/goals"
+                className="text-sm text-muted hover:text-foreground transition-colors duration-200"
+              >
+                All Goals
+              </Link>
+              <ThemeToggle />
+            </div>
           </div>
         </nav>
       </header>

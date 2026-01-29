@@ -12,6 +12,18 @@
   --color-border: #3d3d52;
 }
 
+/* Light theme overrides */
+:root[data-theme="light"] {
+  --color-background: #f8f7f4;
+  --color-foreground: #1a1a1a;
+  --color-accent: #3b6fd9;
+  --color-accent-dark: #2a5bc7;
+  --color-muted: #666666;
+  --color-card: #ffffff;
+  --color-card-hover: #f0f0f0;
+  --color-border: #e5e5e5;
+}
+
 html {
   scroll-behavior: smooth;
   font-size: 17px; /* Base font size increase for better readability */
