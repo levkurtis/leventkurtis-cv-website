@@ -49,10 +49,6 @@ export function getAllGoals(): Goal[] {
         targetDate: targetDateValue,
         completedDate: completedDateValue,
         link: data.link,
-        rating: data.rating,
-        author: data.author,
-        director: data.director,
-        year: data.year,
       }
     })
 

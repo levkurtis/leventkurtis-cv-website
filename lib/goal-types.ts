@@ -1,6 +1,6 @@
 export type GoalStatus = 'Not Started' | 'In Progress' | 'Complete'
 
-export type GoalCategory = 'focus' | 'career' | 'reading' | 'life' | 'movies'
+export type GoalCategory = 'focus' | 'career' | 'life'
 
 export type GoalFrontmatter = {
   title: string
@@ -13,12 +13,6 @@ export type GoalFrontmatter = {
   targetDate?: string
   completedDate?: string
   link?: string
-  rating?: number
-  // Reading specific
-  author?: string
-  // Movie specific
-  director?: string
-  year?: number
 }
 
 export type Goal = GoalFrontmatter & {
@@ -55,21 +49,11 @@ export const categoryConfig: Record<GoalCategory, { label: string; description: 
     description: 'Professional milestones and certifications',
     color: 'text-purple-400',
   },
-  reading: {
-    label: 'Reading List',
-    description: 'Books to read and have read',
-    color: 'text-amber-400',
-  },
   life: {
     label: 'Life Goals',
     description: 'Personal achievements and milestones',
     color: 'text-emerald-400',
   },
-  movies: {
-    label: 'Movie List',
-    description: 'Films to watch and have watched',
-    color: 'text-rose-400',
-  },
 }
 
-export const categoryOrder: GoalCategory[] = ['focus', 'career', 'reading', 'life', 'movies']
+export const categoryOrder: GoalCategory[] = ['focus', 'career', 'life']

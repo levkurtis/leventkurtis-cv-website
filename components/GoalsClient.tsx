@@ -60,21 +60,6 @@ function CategoryTab({ category, active, count, onClick }: {
   )
 }
 
-function RatingStars({ rating }: { rating: number }) {
-  return (
-    <div className="flex gap-0.5">
-      {[1, 2, 3, 4, 5].map((star) => (
-        <span
-          key={star}
-          className={star <= rating ? 'text-amber-400' : 'text-gray-600'}
-        >
-          ★
-        </span>
-      ))}
-    </div>
-  )
-}
-
 function GoalCard({ goal, expanded, onToggle }: {
   goal: Goal
   expanded: boolean
@@ -102,16 +87,6 @@ function GoalCard({ goal, expanded, onToggle }: {
               goal.title
             )}
           </h3>
-          {/* Author for reading */}
-          {goal.author && (
-            <p className="text-sm text-muted">by {goal.author}</p>
-          )}
-          {/* Director for movies */}
-          {goal.director && (
-            <p className="text-sm text-muted">
-              dir. {goal.director}{goal.year ? ` (${goal.year})` : ''}
-            </p>
-          )}
         </div>
         <StatusBadge status={goal.status} />
       </div>
@@ -128,7 +103,6 @@ function GoalCard({ goal, expanded, onToggle }: {
           {goal.completedDate && (
             <span>Completed: {goal.completedDate}</span>
           )}
-          {goal.rating && <RatingStars rating={goal.rating} />}
         </div>
 
         {hasContent && (
@@ -170,9 +144,7 @@ export default function GoalsClient({ goals }: { goals: Goal[] }) {
     const grouped: Record<GoalCategory, Goal[]> = {
       focus: [],
       career: [],
-      reading: [],
       life: [],
-      movies: [],
     }
     filteredGoals.forEach(goal => grouped[goal.category].push(goal))
     return grouped
@@ -183,9 +155,7 @@ export default function GoalsClient({ goals }: { goals: Goal[] }) {
     const counts: Record<GoalCategory, number> = {
       focus: 0,
       career: 0,
-      reading: 0,
       life: 0,
-      movies: 0,
     }
     goals.forEach(goal => counts[goal.category]++)
     return counts
@@ -215,7 +185,7 @@ export default function GoalsClient({ goals }: { goals: Goal[] }) {
             Goals & Life
           </h1>
           <p className="text-lg text-muted max-w-2xl mx-auto">
-            Tracking what I am working towards - career, reading, personal milestones, and more.
+            Tracking what I am working towards - career goals and personal milestones.
           </p>
         </div>
 
