@@ -1,9 +1,11 @@
 'use client'
 
 import { useState, useMemo } from 'react'
+import Link from 'next/link'
 import ReactMarkdown from 'react-markdown'
 import {
   statusConfig,
+  statusOrder,
   categoryConfig,
   categoryOrder,
   type GoalStatus,
@@ -67,8 +69,22 @@ function GoalCard({ goal, expanded, onToggle }: {
 }) {
   const hasContent = goal.content.trim().length > 0
 
+  const handleCardClick = (e: React.MouseEvent) => {
+    // Don't toggle if clicking on a link or button
+    const target = e.target as HTMLElement
+    if (target.closest('a') || target.closest('button')) {
+      return
+    }
+    if (hasContent) {
+      onToggle()
+    }
+  }
+
   return (
-    <div className="bg-card hover:bg-card-hover border border-border rounded-xl p-5 transition-all duration-300">
+    <div
+      className={`bg-card hover:bg-card-hover border border-border rounded-xl p-5 transition-all duration-300 ${hasContent ? 'cursor-pointer' : ''}`}
+      onClick={handleCardClick}
+    >
       {/* Header row */}
       <div className="flex items-start justify-between gap-4 mb-2">
         <div className="flex-1">
@@ -79,6 +95,7 @@ function GoalCard({ goal, expanded, onToggle }: {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-accent transition-colors"
+                onClick={(e) => e.stopPropagation()}
               >
                 {goal.title}
                 <span className="ml-1 text-xs opacity-60">↗</span>
@@ -103,21 +120,47 @@ function GoalCard({ goal, expanded, onToggle }: {
           {goal.completedDate && (
             <span>Completed: {goal.completedDate}</span>
           )}
+          {goal.projectSlugs && goal.projectSlugs.length > 0 && (
+            <div className="flex items-center gap-2">
+              <span>Projects:</span>
+              {goal.projectSlugs.map((slug, index) => (
+                <Link
+                  key={slug}
+                  href={`/projects/${slug}`}
+                  className="text-accent hover:text-accent-dark transition-colors"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  {slug}{index < goal.projectSlugs!.length - 1 ? ',' : ''}
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
 
         {hasContent && (
-          <button
-            onClick={onToggle}
-            className="text-accent hover:text-accent-dark transition-colors"
-          >
-            {expanded ? 'Show less' : 'Show more'}
-          </button>
+          <span className="text-accent flex items-center gap-1">
+            {expanded ? (
+              <>
+                <span>Less</span>
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+                </svg>
+              </>
+            ) : (
+              <>
+                <span>More</span>
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </>
+            )}
+          </span>
         )}
       </div>
 
       {/* Expandable content */}
       {expanded && hasContent && (
-        <div className="mt-4 pt-4 border-t border-border prose prose-sm prose-invert max-w-none">
+        <div className="mt-4 pt-4 border-t border-border prose-enhanced">
           <ReactMarkdown>{goal.content}</ReactMarkdown>
         </div>
       )}
@@ -192,7 +235,7 @@ export default function GoalsClient({ goals }: { goals: Goal[] }) {
         {/* Status Filter */}
         <div className="mb-6">
           <div className="flex flex-wrap justify-center gap-3">
-            {(Object.keys(statusConfig) as GoalStatus[]).map((status) => (
+            {statusOrder.map((status) => (
               <StatusBadge
                 key={status}
                 status={status}

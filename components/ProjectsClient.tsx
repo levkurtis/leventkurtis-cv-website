@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from 'react'
 import Link from 'next/link'
-import { statusConfig, type ProjectStatus, type Project } from '@/lib/project-types'
+import { statusConfig, statusOrder, type ProjectStatus, type Project } from '@/lib/project-types'
 
 function StatusBadge({ status, interactive = false, active = false, onClick }: {
   status: ProjectStatus
@@ -139,7 +139,7 @@ export default function ProjectsClient({ projects }: { projects: Project[] }) {
         {/* Status Filter */}
         <div className="mb-6">
           <div className="flex flex-wrap justify-center gap-3">
-            {(Object.keys(statusConfig) as ProjectStatus[]).map((status) => (
+            {statusOrder.map((status) => (
               <StatusBadge
                 key={status}
                 status={status}

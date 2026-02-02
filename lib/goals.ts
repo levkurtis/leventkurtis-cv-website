@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
-import { type Goal, type GoalStatus, type GoalCategory, categoryOrder } from './goal-types'
+import { type Goal, type GoalStatus, type GoalCategory, categoryOrder, statusOrder } from './goal-types'
 
 // Re-export types and config for server-side usage
 export * from './goal-types'
@@ -49,15 +49,21 @@ export function getAllGoals(): Goal[] {
         targetDate: targetDateValue,
         completedDate: completedDateValue,
         link: data.link,
+        projectSlugs: data.projectSlugs || [],
       }
     })
 
-  // Sort by category order, then priority (high to low), then date (newest first)
+  // Sort by category order, then status order, then priority (high to low), then date (newest first)
   return allGoals.sort((a, b) => {
     // Category order first
-    const aOrder = categoryOrder.indexOf(a.category)
-    const bOrder = categoryOrder.indexOf(b.category)
-    if (aOrder !== bOrder) return aOrder - bOrder
+    const aCatOrder = categoryOrder.indexOf(a.category)
+    const bCatOrder = categoryOrder.indexOf(b.category)
+    if (aCatOrder !== bCatOrder) return aCatOrder - bCatOrder
+
+    // Then by status order
+    const aStatusOrder = statusOrder.indexOf(a.status)
+    const bStatusOrder = statusOrder.indexOf(b.status)
+    if (aStatusOrder !== bStatusOrder) return aStatusOrder - bStatusOrder
 
     // Then by priority (higher first)
     const aPriority = a.priority || 0

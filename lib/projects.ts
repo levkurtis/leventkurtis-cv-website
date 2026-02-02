@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
-import { type Project, type ProjectStatus } from './project-types'
+import { type Project, type ProjectStatus, statusOrder } from './project-types'
 
 // Re-export types and config for server-side usage
 export * from './project-types'
@@ -40,8 +40,13 @@ export function getAllProjects(): Project[] {
       }
     })
 
-  // Sort by date (newest first)
-  return allProjects.sort((a, b) => (a.date > b.date ? -1 : 1))
+  // Sort by status order first, then by date (newest first)
+  return allProjects.sort((a, b) => {
+    const aStatusIndex = statusOrder.indexOf(a.status)
+    const bStatusIndex = statusOrder.indexOf(b.status)
+    if (aStatusIndex !== bStatusIndex) return aStatusIndex - bStatusIndex
+    return a.date > b.date ? -1 : 1
+  })
 }
 
 export function getProjectBySlug(slug: string): Project | null {

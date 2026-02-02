@@ -41,3 +41,5 @@ export const statusConfig: Record<ProjectStatus, { color: string; bgColor: strin
     description: 'No longer pursuing',
   },
 }
+
+export const statusOrder: ProjectStatus[] = ['Ongoing', 'Pending', 'Done', 'Paused', 'Cancelled']

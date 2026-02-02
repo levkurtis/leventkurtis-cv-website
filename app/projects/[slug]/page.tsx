@@ -93,27 +93,17 @@ export default async function ProjectPage({ params }: Props) {
           )}
         </header>
 
-        {/* Content */}
-        <div className="prose prose-invert prose-lg max-w-none
-          prose-headings:text-foreground prose-headings:font-semibold
-          prose-p:text-foreground/80 prose-p:leading-relaxed
-          prose-a:text-accent prose-a:no-underline hover:prose-a:underline
-          prose-strong:text-foreground prose-strong:font-semibold
-          prose-code:text-accent prose-code:bg-card prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none
-          prose-pre:bg-card prose-pre:border prose-pre:border-border
-          prose-blockquote:border-accent prose-blockquote:text-muted prose-blockquote:italic
-          prose-ul:text-foreground/80 prose-ol:text-foreground/80
-          prose-li:marker:text-accent
-          prose-hr:border-border
-          prose-img:rounded-xl prose-img:shadow-lg
-        ">
-          <ReactMarkdown remarkPlugins={[remarkGfm]}>
-            {project.content}
-          </ReactMarkdown>
+        {/* Content Card */}
+        <div className="bg-card border border-border rounded-xl p-6 sm:p-8 lg:p-10">
+          <div className="prose-enhanced text-foreground/90 leading-relaxed">
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+              {project.content}
+            </ReactMarkdown>
+          </div>
         </div>
 
         {/* Footer Navigation */}
-        <div className="mt-16 pt-8 border-t border-border">
+        <div className="mt-12 pt-8 border-t border-border">
           <Link
             href="/projects"
             className="inline-flex items-center gap-2 text-accent hover:text-accent-dark transition-colors"

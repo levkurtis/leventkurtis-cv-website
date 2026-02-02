@@ -13,6 +13,7 @@ export type GoalFrontmatter = {
   targetDate?: string
   completedDate?: string
   link?: string
+  projectSlugs?: string[] // Links to related projects
 }
 
 export type Goal = GoalFrontmatter & {
@@ -38,10 +39,12 @@ export const statusConfig: Record<GoalStatus, { color: string; bgColor: string; 
   },
 }
 
+export const statusOrder: GoalStatus[] = ['In Progress', 'Not Started', 'Complete']
+
 export const categoryConfig: Record<GoalCategory, { label: string; description: string; color: string }> = {
   focus: {
-    label: 'Currently Working On',
-    description: 'Active focus areas right now',
+    label: 'Technical',
+    description: 'Technical skills and learning goals',
     color: 'text-orange-400',
   },
   career: {

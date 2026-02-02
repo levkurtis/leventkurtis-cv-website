@@ -23,44 +23,40 @@ type Album = {
 const albums: Album[] = [
   {
     slug: 'seoul',
-    title: 'Seoul',
+    title: "Seoul '19",
     subtitle: 'South Korea',
-    thumbnail: '/photography-portfolio/card1.jpg',
-    gradientColors: ['#e8b4b8', '#a7c7e7'], // Soft pink to soft blue (Korean aesthetic)
+    thumbnail: '/photography-portfolio/seoul/card1.jpg',
+    gradientColors: ['#e8b4b8', '#a7c7e7'],
   },
-  // Future albums can be added here:
-  // {
-  //   slug: 'copenhagen',
-  //   title: 'Copenhagen',
-  //   subtitle: 'Denmark',
-  //   thumbnail: '/photography-portfolio/future.jpg',
-  //   gradientColors: ['#...', '#...'],
-  // },
+  {
+    slug: 'japan',
+    title: "Japan '24",
+    subtitle: 'Japan',
+    thumbnail: '/photography-portfolio/japan/card1.JPG',
+    gradientColors: ['#dc5c5c', '#fff5f5'],
+  },
+  {
+    slug: 'vietnam',
+    title: "Vietnam '25",
+    subtitle: 'Vietnam',
+    thumbnail: '/photography-portfolio/vietnam/card1.JPG',
+    gradientColors: ['#da251d', '#ffcd00'],
+  },
 ]
 
 function AlbumCard({ album }: { album: Album }) {
   return (
     <Link href={`/photography/${album.slug}`} className="group block">
       <div className="relative aspect-[4/5] overflow-hidden rounded-lg">
-        {/* Gradient background - visible on hover */}
-        <div
-          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out"
-          style={{
-            background: `linear-gradient(135deg, ${album.gradientColors[0]} 0%, ${album.gradientColors[1]} 100%)`,
-          }}
-        />
-
         {/* Thumbnail image */}
-        <div className="absolute inset-0 p-3 sm:p-4">
-          <div className="relative w-full h-full overflow-hidden rounded-md shadow-lg group-hover:shadow-2xl transition-shadow duration-500">
-            <Image
-              src={album.thumbnail}
-              alt={album.title}
-              fill
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
-            />
-          </div>
+        <div className="absolute inset-0">
+          <Image
+            src={album.thumbnail}
+            alt={album.title}
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+          />
         </div>
 
         {/* Title overlay */}
@@ -100,12 +96,6 @@ export default function PhotographyPage() {
           ))}
         </div>
 
-        {/* Empty state hint for future */}
-        {albums.length === 1 && (
-          <p className="text-center text-muted mt-12 text-sm">
-            More albums coming soon...
-          </p>
-        )}
       </div>
     </section>
   )
