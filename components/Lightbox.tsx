@@ -2,6 +2,7 @@
 
 import { useEffect, useCallback } from 'react'
 import Image from 'next/image'
+import { CloseIcon, ArrowLeftIcon, ArrowRightIcon } from './icons'
 
 export type LightboxImage = {
   src: string
@@ -84,9 +85,7 @@ export default function Lightbox({
         className="absolute top-4 right-4 z-10 p-2 text-white/70 hover:text-white transition-colors"
         aria-label="Close lightbox"
       >
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-        </svg>
+        <CloseIcon />
       </button>
 
       {/* Image counter */}
@@ -106,9 +105,7 @@ export default function Lightbox({
           className="absolute left-4 z-10 p-2 text-white/70 hover:text-white transition-colors"
           aria-label="Previous image"
         >
-          <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-          </svg>
+          <ArrowLeftIcon />
         </button>
       )}
 
@@ -146,9 +143,7 @@ export default function Lightbox({
           className="absolute right-4 z-10 p-2 text-white/70 hover:text-white transition-colors"
           aria-label="Next image"
         >
-          <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          <ArrowRightIcon />
         </button>
       )}
 

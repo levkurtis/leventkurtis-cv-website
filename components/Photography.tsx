@@ -1,94 +1,10 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useMemo } from 'react'
 import Image from 'next/image'
 import Lightbox, { type LightboxImage } from './Lightbox'
-
-type Spread =
-  | { type: 'hero'; image: string; title: string; subtitle?: string }
-  | { type: 'text-right'; image: string; title: string; text: string }
-  | { type: 'text-left'; image: string; title: string; text: string }
-  | { type: 'full-width'; image: string; caption?: string }
-  | { type: 'grid-quote'; images: string[]; quote: string }
-  | { type: 'duo'; images: [string, string]; caption?: string }
-
-// Seoul, South Korea album
-const seoulSpreads: Spread[] = [
-  {
-    type: 'hero',
-    image: '/photography-portfolio/seoul/card1.jpg',
-    title: 'Seoul, South Korea',
-    subtitle: 'A journey through tradition and modernity',
-  },
-  {
-    type: 'text-right',
-    image: '/photography-portfolio/seoul/card2.jpg',
-    title: 'First Impressions',
-    text: 'Landing in Seoul feels like stepping into the future while being surrounded by centuries of history. The city pulses with an energy that is uniquely Korean.',
-  },
-  {
-    type: 'duo',
-    images: ['/photography-portfolio/seoul/card3.jpg', '/photography-portfolio/seoul/card4.jpg'],
-    caption: 'Where ancient palaces meet neon lights',
-  },
-  {
-    type: 'text-left',
-    image: '/photography-portfolio/seoul/card5.jpg',
-    title: 'Street Life',
-    text: 'The streets of Seoul tell their own stories. From the bustling markets of Myeongdong to the quiet alleys of Bukchon, every corner reveals something unexpected.',
-  },
-  {
-    type: 'full-width',
-    image: '/photography-portfolio/seoul/card6.jpg',
-    caption: 'Golden hour over the Han River',
-  },
-  {
-    type: 'grid-quote',
-    images: [
-      '/photography-portfolio/seoul/card7.jpg',
-      '/photography-portfolio/seoul/card8.jpg',
-      '/photography-portfolio/seoul/card9.jpg',
-      '/photography-portfolio/seoul/card10.jpg',
-    ],
-    quote: 'In Seoul, tradition is not preserved — it is lived',
-  },
-  {
-    type: 'text-right',
-    image: '/photography-portfolio/seoul/card11.jpg',
-    title: 'Temple Mornings',
-    text: 'Waking up early to visit the temples before the crowds. The silence, broken only by distant chanting, creates a sense of peace that stays with you.',
-  },
-  {
-    type: 'duo',
-    images: ['/photography-portfolio/seoul/card12.jpg', '/photography-portfolio/seoul/card13.jpg'],
-    caption: 'Details in the architecture',
-  },
-  {
-    type: 'full-width',
-    image: '/photography-portfolio/seoul/card14.jpg',
-  },
-  {
-    type: 'text-left',
-    image: '/photography-portfolio/seoul/card15.jpg',
-    title: 'Night Falls',
-    text: 'As darkness settles, Seoul transforms. The city lights up in ways that make you understand why they call it the city that never sleeps.',
-  },
-  {
-    type: 'grid-quote',
-    images: [
-      '/photography-portfolio/seoul/card16.jpg',
-      '/photography-portfolio/seoul/card17.jpg',
-      '/photography-portfolio/seoul/card18.jpg',
-      '/photography-portfolio/seoul/card19.jpg',
-    ],
-    quote: 'Every photograph is a memory I can revisit',
-  },
-  {
-    type: 'full-width',
-    image: '/photography-portfolio/seoul/card20.jpg',
-    caption: 'Until next time, Seoul',
-  },
-]
+import { useLightbox } from '@/hooks/useLightbox'
+import { seoulSpreads, type Spread } from '@/lib/photography-data'
 
 // Extract all images from spreads for lightbox navigation
 function getAllImages(spreads: Spread[]): LightboxImage[] {
@@ -341,35 +257,25 @@ function SpreadRenderer({ spread, onImageClick }: { spread: Spread; onImageClick
 }
 
 export default function Photography() {
-  const [lightboxOpen, setLightboxOpen] = useState(false)
-  const [lightboxIndex, setLightboxIndex] = useState(0)
-
   const allImages = useMemo(() => getAllImages(seoulSpreads), [])
-
-  const handleImageClick = (src: string) => {
-    const index = allImages.findIndex((img) => img.src === src)
-    if (index !== -1) {
-      setLightboxIndex(index)
-      setLightboxOpen(true)
-    }
-  }
+  const lightbox = useLightbox(allImages)
 
   return (
     <>
       <section className="py-12 sm:py-20 px-4">
         <div className="max-w-5xl mx-auto">
           {seoulSpreads.map((spread, index) => (
-            <SpreadRenderer key={index} spread={spread} onImageClick={handleImageClick} />
+            <SpreadRenderer key={index} spread={spread} onImageClick={lightbox.openBySrc} />
           ))}
         </div>
       </section>
 
       <Lightbox
         images={allImages}
-        currentIndex={lightboxIndex}
-        isOpen={lightboxOpen}
-        onClose={() => setLightboxOpen(false)}
-        onNavigate={setLightboxIndex}
+        currentIndex={lightbox.currentIndex}
+        isOpen={lightbox.isOpen}
+        onClose={lightbox.close}
+        onNavigate={lightbox.onNavigate}
       />
     </>
   )

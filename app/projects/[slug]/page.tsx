@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { getProjectBySlug, getAllProjectSlugs, statusConfig } from '@/lib/projects'
+import BackLink from '@/components/ui/BackLink'
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -49,15 +50,7 @@ export default async function ProjectPage({ params }: Props) {
       <div className="max-w-3xl mx-auto">
         {/* Breadcrumb */}
         <div className="mb-8">
-          <Link
-            href="/projects"
-            className="inline-flex items-center gap-2 text-sm text-muted hover:text-foreground transition-colors"
-          >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-            All Projects
-          </Link>
+          <BackLink href="/projects" label="All Projects" />
         </div>
 
         {/* Header */}
@@ -104,15 +97,11 @@ export default async function ProjectPage({ params }: Props) {
 
         {/* Footer Navigation */}
         <div className="mt-12 pt-8 border-t border-border">
-          <Link
+          <BackLink
             href="/projects"
-            className="inline-flex items-center gap-2 text-accent hover:text-accent-dark transition-colors"
-          >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-            Back to all projects
-          </Link>
+            label="Back to all projects"
+            className="text-accent hover:text-accent-dark"
+          />
         </div>
       </div>
     </article>

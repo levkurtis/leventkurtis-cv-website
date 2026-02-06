@@ -10,6 +10,8 @@
   --color-card: #2a2a3d;
   --color-card-hover: #363649;
   --color-border: #3d3d52;
+  --color-scrollbar-thumb: #404040;
+  --color-scrollbar-thumb-hover: #525252;
 }
 
 /* Light theme overrides */
@@ -22,6 +24,8 @@
   --color-card: #ffffff;
   --color-card-hover: #f0f0f0;
   --color-border: #e5e5e5;
+  --color-scrollbar-thumb: #d0d0d0;
+  --color-scrollbar-thumb-hover: #b0b0b0;
 }
 
 html {
@@ -52,12 +56,12 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #404040;
+  background: var(--color-scrollbar-thumb);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #525252;
+  background: var(--color-scrollbar-thumb-hover);
 }
 
 /* Selection color */

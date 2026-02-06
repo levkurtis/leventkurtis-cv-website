@@ -1,48 +1,13 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
+import { albums, type Album } from '@/lib/photography-data'
+import { createPageMetadata } from '@/lib/metadata'
 
-export const metadata: Metadata = {
-  title: 'Photography | Levent Kurtis',
-  description: 'A collection of moments captured through my lens - photography portfolio by Levent Kurtis.',
-  openGraph: {
-    title: 'Photography | Levent Kurtis',
-    description: 'A collection of moments captured through my lens.',
-    type: 'website',
-  },
-}
-
-type Album = {
-  slug: string
-  title: string
-  subtitle?: string
-  thumbnail: string
-  gradientColors: [string, string] // [primary, secondary] for gradient
-}
-
-const albums: Album[] = [
-  {
-    slug: 'seoul',
-    title: "Seoul '19",
-    subtitle: 'South Korea',
-    thumbnail: '/photography-portfolio/seoul/card1.jpg',
-    gradientColors: ['#e8b4b8', '#a7c7e7'],
-  },
-  {
-    slug: 'japan',
-    title: "Japan '24",
-    subtitle: 'Japan',
-    thumbnail: '/photography-portfolio/japan/card1.JPG',
-    gradientColors: ['#dc5c5c', '#fff5f5'],
-  },
-  {
-    slug: 'vietnam',
-    title: "Vietnam '25",
-    subtitle: 'Vietnam',
-    thumbnail: '/photography-portfolio/vietnam/card1.JPG',
-    gradientColors: ['#da251d', '#ffcd00'],
-  },
-]
+export const metadata: Metadata = createPageMetadata(
+  'Photography | Levent Kurtis',
+  'A collection of moments captured through my lens - photography portfolio by Levent Kurtis.'
+)
 
 function AlbumCard({ album }: { album: Album }) {
   return (

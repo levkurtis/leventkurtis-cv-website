@@ -1,5 +1,4 @@
-import Link from 'next/link'
-import ThemeToggle from '@/components/ThemeToggle'
+import ContentLayout from '@/components/ContentLayout'
 
 export default function PhotographyLayout({
   children,
@@ -7,40 +6,13 @@ export default function PhotographyLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
-        <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <Link
-              href="/"
-              className="text-xl font-semibold text-foreground hover:text-muted transition-colors"
-            >
-              LK
-            </Link>
-            <div className="flex items-center gap-2">
-              <Link
-                href="/photography"
-                className="text-sm text-muted hover:text-foreground transition-colors duration-200"
-              >
-                All Albums
-              </Link>
-              <ThemeToggle />
-            </div>
-          </div>
-        </nav>
-      </header>
-
-      <main className="pt-16">
-        {children}
-      </main>
-
-      {/* Footer */}
-      <footer className="py-8 px-4 text-center text-sm text-muted border-t border-border">
-        <Link href="/" className="hover:text-foreground transition-colors">
-          leventkurtis.com
-        </Link>
-      </footer>
-    </div>
+    <ContentLayout
+      sectionName="All Albums"
+      sectionLink="/photography"
+      maxWidth="max-w-6xl"
+      variant="foreground"
+    >
+      {children}
+    </ContentLayout>
   )
 }

@@ -117,14 +117,16 @@ export default function Home() {
         <div className="max-w-4xl mx-auto text-center">
           {/* Profile */}
           <div className="mb-8">
-            <Image
-              src="/photo.jpg"
-              alt="Levent Kurtis"
-              width={160}
-              height={160}
-              priority
-              className="w-32 h-32 sm:w-40 sm:h-40 rounded-full object-cover border-2 border-accent shadow-lg shadow-accent/20 mx-auto mb-6"
-            />
+            <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden border-2 border-accent shadow-lg shadow-accent/20 mx-auto mb-6">
+              <Image
+                src="/photo.jpg"
+                alt="Levent Kurtis"
+                width={160}
+                height={160}
+                priority
+                className="w-full h-full object-cover scale-150 object-top"
+              />
+            </div>
             <h1 className="text-4xl sm:text-5xl font-bold mb-3">Levent Kurtis</h1>
             <p className="text-lg text-muted">
               Tech Leader at the Intersection of Data & AI, People, and Delivery

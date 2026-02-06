@@ -1,7 +1,8 @@
 import { MetadataRoute } from 'next'
+import { CONTACT } from '@/lib/constants'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://leventkurtis.com'
+  const baseUrl = CONTACT.siteUrl
 
   return [
     {
@@ -30,6 +31,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/photography/seoul`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly',
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/photography/japan`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly',
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/photography/vietnam`,
       lastModified: new Date(),
       changeFrequency: 'yearly',
       priority: 0.6,

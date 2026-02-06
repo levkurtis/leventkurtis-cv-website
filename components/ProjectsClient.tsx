@@ -3,53 +3,8 @@
 import { useState, useMemo } from 'react'
 import Link from 'next/link'
 import { statusConfig, statusOrder, type ProjectStatus, type Project } from '@/lib/project-types'
-
-function StatusBadge({ status, interactive = false, active = false, onClick }: {
-  status: ProjectStatus
-  interactive?: boolean
-  active?: boolean
-  onClick?: () => void
-}) {
-  const config = statusConfig[status]
-
-  const baseClasses = `inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium rounded-full border ${config.bgColor} ${config.color}`
-  const interactiveClasses = interactive
-    ? `cursor-pointer transition-all duration-200 ${active ? 'ring-2 ring-offset-2 ring-offset-background ring-current' : 'opacity-60 hover:opacity-100'}`
-    : ''
-
-  return (
-    <button
-      type="button"
-      className={`${baseClasses} ${interactiveClasses}`}
-      title={config.description}
-      onClick={onClick}
-      disabled={!interactive}
-    >
-      <span className="w-1.5 h-1.5 rounded-full bg-current" />
-      {status}
-    </button>
-  )
-}
-
-function TagBadge({ tag, active = false, onClick }: {
-  tag: string
-  active?: boolean
-  onClick?: () => void
-}) {
-  return (
-    <button
-      type="button"
-      className={`text-xs px-2.5 py-1 rounded-full border transition-all duration-200 cursor-pointer
-        ${active
-          ? 'bg-accent/20 border-accent text-accent ring-2 ring-offset-2 ring-offset-background ring-accent'
-          : 'bg-card border-border text-muted opacity-60 hover:opacity-100'
-        }`}
-      onClick={onClick}
-    >
-      {tag}
-    </button>
-  )
-}
+import StatusBadge from './ui/StatusBadge'
+import TagBadge from './ui/TagBadge'
 
 function ProjectCard({ project }: { project: Project }) {
   return (
@@ -61,7 +16,7 @@ function ProjectCard({ project }: { project: Project }) {
         <h2 className="text-xl font-semibold text-foreground group-hover:text-accent transition-colors">
           {project.title}
         </h2>
-        <StatusBadge status={project.status} />
+        <StatusBadge status={project.status} config={statusConfig[project.status]} />
       </div>
 
       <p className="text-muted mb-4 line-clamp-2">{project.description}</p>
@@ -143,6 +98,7 @@ export default function ProjectsClient({ projects }: { projects: Project[] }) {
               <StatusBadge
                 key={status}
                 status={status}
+                config={statusConfig[status]}
                 interactive
                 active={activeStatus === status}
                 onClick={() => handleStatusClick(status)}

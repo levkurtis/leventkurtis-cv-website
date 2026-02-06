@@ -1,8 +1,8 @@
 'use client'
 
-import { useState } from 'react'
 import Image from 'next/image'
 import Lightbox, { type LightboxImage } from './Lightbox'
+import { useLightbox } from '@/hooks/useLightbox'
 
 type PhotoGalleryProps = {
   title: string
@@ -12,18 +12,12 @@ type PhotoGalleryProps = {
 }
 
 export default function PhotoGallery({ title, subtitle, photos, basePath }: PhotoGalleryProps) {
-  const [lightboxOpen, setLightboxOpen] = useState(false)
-  const [lightboxIndex, setLightboxIndex] = useState(0)
-
   const images: LightboxImage[] = photos.map((photo, i) => ({
     src: `${basePath}/${photo}`,
     alt: `${title} photo ${i + 1}`,
   }))
 
-  const handleImageClick = (index: number) => {
-    setLightboxIndex(index)
-    setLightboxOpen(true)
-  }
+  const lightbox = useLightbox(images)
 
   return (
     <>
@@ -47,7 +41,7 @@ export default function PhotoGallery({ title, subtitle, photos, basePath }: Phot
               <div
                 key={photo}
                 className="relative aspect-[4/5] overflow-hidden rounded-xl shadow-lg cursor-pointer group"
-                onClick={() => handleImageClick(index)}
+                onClick={() => lightbox.openAtIndex(index)}
               >
                 <Image
                   src={`${basePath}/${photo}`}
@@ -64,10 +58,10 @@ export default function PhotoGallery({ title, subtitle, photos, basePath }: Phot
 
       <Lightbox
         images={images}
-        currentIndex={lightboxIndex}
-        isOpen={lightboxOpen}
-        onClose={() => setLightboxOpen(false)}
-        onNavigate={setLightboxIndex}
+        currentIndex={lightbox.currentIndex}
+        isOpen={lightbox.isOpen}
+        onClose={lightbox.close}
+        onNavigate={lightbox.onNavigate}
       />
     </>
   )

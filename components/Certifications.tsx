@@ -1,3 +1,5 @@
+import { BadgeCheckIcon, ClockIcon } from './icons'
+
 interface Certification {
   name: string
   issuer: string
@@ -58,42 +60,6 @@ function ProgressBar({ progress }: { progress: number }) {
   )
 }
 
-function CompletedIcon() {
-  return (
-    <svg
-      className="w-5 h-5 text-accent mt-0.5 flex-shrink-0"
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
-      />
-    </svg>
-  )
-}
-
-function InProgressIcon() {
-  return (
-    <svg
-      className="w-5 h-5 text-blue-400 mt-0.5 flex-shrink-0 animate-pulse"
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-      />
-    </svg>
-  )
-}
-
 export default function Certifications() {
   return (
     <section id="certifications" className="py-20 px-4">
@@ -115,9 +81,9 @@ export default function Certifications() {
                 {category.certifications.map((cert, idx) => (
                   <li key={idx} className="flex items-start gap-2">
                     {cert.status === 'in-progress' ? (
-                      <InProgressIcon />
+                      <ClockIcon className="w-5 h-5 text-blue-400 mt-0.5 flex-shrink-0 animate-pulse" />
                     ) : (
-                      <CompletedIcon />
+                      <BadgeCheckIcon className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
                     )}
                     <div className="flex-1">
                       <p className={`text-sm font-medium ${cert.status === 'in-progress' ? 'text-foreground/70' : 'text-foreground/90'}`}>

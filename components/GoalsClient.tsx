@@ -12,55 +12,9 @@ import {
   type GoalCategory,
   type Goal,
 } from '@/lib/goal-types'
-
-function StatusBadge({ status, interactive = false, active = false, onClick }: {
-  status: GoalStatus
-  interactive?: boolean
-  active?: boolean
-  onClick?: () => void
-}) {
-  const config = statusConfig[status]
-
-  const baseClasses = `inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium rounded-full border ${config.bgColor} ${config.color}`
-  const interactiveClasses = interactive
-    ? `cursor-pointer transition-all duration-200 ${active ? 'ring-2 ring-offset-2 ring-offset-background ring-current' : 'opacity-60 hover:opacity-100'}`
-    : ''
-
-  return (
-    <button
-      type="button"
-      className={`${baseClasses} ${interactiveClasses}`}
-      title={config.description}
-      onClick={onClick}
-      disabled={!interactive}
-    >
-      <span className="w-1.5 h-1.5 rounded-full bg-current" />
-      {status}
-    </button>
-  )
-}
-
-function CategoryTab({ category, active, count, onClick }: {
-  category: GoalCategory
-  active: boolean
-  count: number
-  onClick: () => void
-}) {
-  const config = categoryConfig[category]
-  return (
-    <button
-      onClick={onClick}
-      className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200
-        ${active
-          ? 'bg-accent/20 text-accent border border-accent/30'
-          : 'text-muted hover:text-foreground hover:bg-card border border-transparent'
-        }`}
-    >
-      {config.label}
-      <span className="ml-2 text-xs opacity-60">({count})</span>
-    </button>
-  )
-}
+import StatusBadge from './ui/StatusBadge'
+import CategoryTab from './ui/CategoryTab'
+import { ChevronIcon } from './icons'
 
 function GoalCard({ goal, expanded, onToggle }: {
   goal: Goal
@@ -70,7 +24,6 @@ function GoalCard({ goal, expanded, onToggle }: {
   const hasContent = goal.content.trim().length > 0
 
   const handleCardClick = (e: React.MouseEvent) => {
-    // Don't toggle if clicking on a link or button
     const target = e.target as HTMLElement
     if (target.closest('a') || target.closest('button')) {
       return
@@ -105,7 +58,7 @@ function GoalCard({ goal, expanded, onToggle }: {
             )}
           </h3>
         </div>
-        <StatusBadge status={goal.status} />
+        <StatusBadge status={goal.status} config={statusConfig[goal.status]} />
       </div>
 
       {/* Description */}
@@ -142,16 +95,12 @@ function GoalCard({ goal, expanded, onToggle }: {
             {expanded ? (
               <>
                 <span>Less</span>
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
-                </svg>
+                <ChevronIcon isExpanded={true} className="w-4 h-4" />
               </>
             ) : (
               <>
                 <span>More</span>
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
+                <ChevronIcon isExpanded={false} className="w-4 h-4" />
               </>
             )}
           </span>
@@ -239,6 +188,7 @@ export default function GoalsClient({ goals }: { goals: Goal[] }) {
               <StatusBadge
                 key={status}
                 status={status}
+                config={statusConfig[status]}
                 interactive
                 active={activeStatus === status}
                 onClick={() => handleStatusClick(status)}
@@ -253,7 +203,7 @@ export default function GoalsClient({ goals }: { goals: Goal[] }) {
             {categoryOrder.map((category) => (
               <CategoryTab
                 key={category}
-                category={category}
+                label={categoryConfig[category].label}
                 active={activeCategory === category}
                 count={categoryCounts[category]}
                 onClick={() => handleCategoryClick(category)}
