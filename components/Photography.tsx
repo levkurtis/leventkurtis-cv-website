@@ -85,7 +85,7 @@ function HeroSpread({ spread, onImageClick }: { spread: Extract<Spread, { type: 
           sizes="100vw"
           className="object-cover transition-transform duration-500 group-hover:scale-105"
           priority
-          quality={70}
+          quality={60}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
@@ -111,7 +111,7 @@ function TextRightSpread({ spread, onImageClick }: { spread: Extract<Spread, { t
           alt={spread.title}
           fill
           sizes="(max-width: 768px) 100vw, 50vw"
-          quality={70}
+          quality={60}
           className="object-cover transition-transform duration-500 group-hover:scale-105"
         />
       </div>
@@ -139,7 +139,7 @@ function TextLeftSpread({ spread, onImageClick }: { spread: Extract<Spread, { ty
           alt={spread.title}
           fill
           sizes="(max-width: 768px) 100vw, 50vw"
-          quality={70}
+          quality={60}
           className="object-cover transition-transform duration-500 group-hover:scale-105"
         />
       </div>
@@ -159,7 +159,7 @@ function FullWidthSpread({ spread, onImageClick }: { spread: Extract<Spread, { t
           alt={spread.caption || 'Photography'}
           fill
           sizes="100vw"
-          quality={70}
+          quality={60}
           className="object-cover transition-transform duration-500 group-hover:scale-105"
         />
       </div>
@@ -185,7 +185,7 @@ function GridQuoteSpread({ spread, onImageClick }: { spread: Extract<Spread, { t
               alt={`Grid image ${i + 1}`}
               fill
               sizes="(max-width: 768px) 50vw, 25vw"
-              quality={70}
+              quality={60}
               className="object-cover transition-transform duration-500 group-hover:scale-105"
             />
           </div>
@@ -206,7 +206,7 @@ function GridQuoteSpread({ spread, onImageClick }: { spread: Extract<Spread, { t
               alt={`Grid image ${i + 3}`}
               fill
               sizes="(max-width: 768px) 50vw, 25vw"
-              quality={70}
+              quality={60}
               className="object-cover transition-transform duration-500 group-hover:scale-105"
             />
           </div>
@@ -231,7 +231,7 @@ function DuoSpread({ spread, onImageClick }: { spread: Extract<Spread, { type: '
               alt={`Duo image ${i + 1}`}
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
-              quality={70}
+              quality={60}
               className="object-cover transition-transform duration-500 group-hover:scale-105"
             />
           </div>

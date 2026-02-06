@@ -49,7 +49,7 @@ export default function PhotoGallery({ title, subtitle, photos, basePath }: Phot
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   priority={index < 3}
-                  quality={70}
+                  quality={60}
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>

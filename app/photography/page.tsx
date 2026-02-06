@@ -21,7 +21,7 @@ function AlbumCard({ album, priority }: { album: Album; priority?: boolean }) {
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             priority={priority}
-            quality={70}
+            quality={60}
             className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
         </div>
