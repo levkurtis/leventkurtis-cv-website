@@ -72,6 +72,24 @@ export default function Lightbox({
     }
   }, [isOpen])
 
+  // Preload adjacent images for faster navigation
+  useEffect(() => {
+    if (!isOpen || !hasMultipleImages) return
+
+    const preloadImage = (index: number) => {
+      const img = new window.Image()
+      img.src = images[index].src
+    }
+
+    // Preload previous image
+    const prevIndex = currentIndex === 0 ? images.length - 1 : currentIndex - 1
+    preloadImage(prevIndex)
+
+    // Preload next image
+    const nextIndex = currentIndex === images.length - 1 ? 0 : currentIndex + 1
+    preloadImage(nextIndex)
+  }, [isOpen, currentIndex, images, hasMultipleImages])
+
   if (!isOpen || !currentImage) return null
 
   return (
@@ -121,7 +139,7 @@ export default function Lightbox({
             width={1920}
             height={1080}
             className="max-w-full max-h-[80vh] w-auto h-auto object-contain"
-            priority
+            loading="eager"
           />
         </div>
 

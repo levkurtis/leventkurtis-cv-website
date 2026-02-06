@@ -9,7 +9,7 @@ export const metadata: Metadata = createPageMetadata(
   'A collection of moments captured through my lens - photography portfolio by Levent Kurtis.'
 )
 
-function AlbumCard({ album }: { album: Album }) {
+function AlbumCard({ album, priority }: { album: Album; priority?: boolean }) {
   return (
     <Link href={`/photography/${album.slug}`} className="group block">
       <div className="relative aspect-[4/5] overflow-hidden rounded-lg">
@@ -20,6 +20,8 @@ function AlbumCard({ album }: { album: Album }) {
             alt={album.title}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            priority={priority}
+            quality={70}
             className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
         </div>
@@ -56,8 +58,8 @@ export default function PhotographyPage() {
 
         {/* Album Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {albums.map((album) => (
-            <AlbumCard key={album.slug} album={album} />
+          {albums.map((album, index) => (
+            <AlbumCard key={album.slug} album={album} priority={index < 3} />
           ))}
         </div>
 
