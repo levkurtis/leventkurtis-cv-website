@@ -50,7 +50,7 @@ const experiences: Job[] = [
     ],
     internalInitiatives: [
       'Founded and lead Accenture\'s partnership with Multicultural Students of CBS, a student organisation at Copenhagen Business School. Manage a team of 6 to drive employer branding, D&I, and talent attraction.',
-      'Organised 3 networking events (30–40+ attendees each) and a case competition (25+ participants) through the partnership.',
+      'Organised 4 networking events (30–40+ attendees each) and a case competition (25+ participants) through the partnership.',
       'Co-lead monthly department community meetings, facilitating industry talks, knowledge sharing, and training sessions.',
       'Supported end-to-end recruitment for the Tech Talent Program, including CV screening, candidate assessment, and providing hiring recommendations to recruiters.',
       'Recruited Accenture consultants to participate in a cross-company hackathon in collaboration with DTU.',
