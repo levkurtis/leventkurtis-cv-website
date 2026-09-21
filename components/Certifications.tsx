@@ -13,14 +13,16 @@ const certificationCategories: CertificationCategory[] = [
   {
     title: 'Generative AI & Agentic AI',
     certifications: [
+      { name: 'Agentic AI for Delivery Practitioners: Level 3A', issuer: 'Accenture', year: '2025' },
       { name: 'Generative AI Leader Certification', issuer: 'Google', year: '2025' },
       { name: 'Reinvention with Agentic AI', issuer: 'Accenture', year: '2025' },
-      { name: 'GenAI for Delivery Practitioners: Level 2', issuer: 'Accenture', year: '2025' },
     ],
   },
   {
     title: 'Data & AI',
     certifications: [
+      { name: 'Databricks Certified Data Engineer Associate', issuer: 'Databricks', year: '2026' },
+      { name: 'Databricks Certified Data Analyst Associate', issuer: 'Databricks', year: '2026' },
       { name: 'Databricks Fundamentals Accreditation', issuer: 'Databricks', year: '2025' },
       { name: 'Business Intelligence Specialisation', issuer: 'Google', year: '2024' },
       { name: 'Data Analytics Specialisation', issuer: 'Google', year: '2024' },
@@ -30,6 +32,7 @@ const certificationCategories: CertificationCategory[] = [
   {
     title: 'Project Delivery',
     certifications: [
+      { name: 'Certified SAFe® 6 Scrum Master', issuer: 'Scaled Agile, Inc.', year: '2026' },
       { name: 'Professional Scrum Master PSM I', issuer: 'Scrum.org', year: '2025' },
       { name: 'Certified SAFe® 6 Practitioner', issuer: 'Scaled Agile, Inc.', year: '2023' },
     ],

@@ -8,13 +8,12 @@ const skillCategories: SkillCategory[] = [
     title: 'Data & Analytics',
     skills: [
       'SQL',
-      'Power BI',
-      'Excel',
       'Python (pandas, numpy, matplotlib)',
       'Databricks',
       'Data Analysis',
-      'Data Quality & Validation',
-      'Data Automation',
+      'Automation',
+      'Power BI',
+      'Excel',
     ],
   },
   {
@@ -30,10 +29,10 @@ const skillCategories: SkillCategory[] = [
     title: 'Delivery & Project Management',
     skills: [
       'Agile Delivery',
-      'PI Planning',
+      'Azure DevOps',
       'JIRA',
+      'PI Planning',
       'SAFe',
-      'Scrum',
     ],
   },
   {
