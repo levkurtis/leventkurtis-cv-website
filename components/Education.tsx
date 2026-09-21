@@ -59,7 +59,7 @@ export default function Education() {
               </div>
 
               <div className="border-l-2 border-accent pl-4">
-                <h4 className="font-semibold text-foreground/90 mb-2">Digital Business & Strategy</h4>
+                <h4 className="font-semibold text-foreground/90 mb-2">Digital Business & Strategy Courses</h4>
                 <ul className="space-y-1">
                   <li className="text-sm text-foreground/70">Digital Transformation Management</li>
                   <li className="text-sm text-foreground/70">Digital Platforms</li>
