@@ -21,7 +21,8 @@ const certificationCategories: CertificationCategory[] = [
   {
     title: 'Data & AI',
     certifications: [
-      { name: 'Databricks Certified Data Engineer Associate', issuer: 'Databricks', year: '2026' },
+      // { name: 'Databricks Certified Data Engineer Professional', issuer: 'Databricks', year: '2026' },
+      // { name: 'Databricks Certified Data Engineer Associate', issuer: 'Databricks', year: '2026' },
       { name: 'Databricks Certified Data Analyst Associate', issuer: 'Databricks', year: '2026' },
       { name: 'Databricks Fundamentals Accreditation', issuer: 'Databricks', year: '2025' },
       { name: 'Business Intelligence Specialisation', issuer: 'Google', year: '2024' },
