@@ -3,7 +3,7 @@
 **Site:** https://leventkurtis.com
 **Stack:** Next.js 14 App Router, static export (`output: 'export'`), Tailwind v4, hosted on Vercel
 **Plan created:** 2026-09-24
-**Status:** Phases 1 to 4 implemented on branch `feat/seo-optimization`. Not yet deployed. Phase 5 (Search Console) and Phase 6 (design) outstanding.
+**Status:** Phases 1 to 4 implemented and **live in production** (merged to `main`, 2026-09-24). Phase 5 (Search Console) and Phase 6 (design) outstanding.
 
 ---
 
@@ -288,25 +288,38 @@ Also validate the JSON-LD with Google's Rich Results Test and schema.org's valid
 
 Implemented on branch `feat/seo-optimization`, 2026-09-24. Not yet deployed.
 
-### Lighthouse, mobile
+### Lighthouse: production before vs production after
 
-| | Before (production) | After (local production build) |
-|---|---|---|
-| Performance | 81 | 99 |
-| Accessibility | 96 | 100 |
-| Best Practices | 96 | 96 |
-| SEO | 100 | 100 |
-| LCP | 4.7 s | 2.0 s |
-| TBT | 110 ms | 0 ms |
-| CLS | 0.008 | 0 |
-| Total page weight | 1,277 KiB | 195 KiB |
+Both columns measured against `https://leventkurtis.com` with lighthouse@12,
+so this is a like-for-like comparison.
 
-**Read these with care.** The "after" run is against a local static server, so its
-TTFB is near zero where production measured 623 ms. Lighthouse's mobile network
-throttling is simulated and applies in both runs, so the comparison is broadly
-meaningful, but the score is flattered. The page weight reduction (1,277 to 195 KiB)
-and the accessibility and TBT improvements are environment-independent and real.
-Re-run against production after deploying before treating any of it as final.
+| | Mobile before | Mobile after | Desktop before | Desktop after |
+|---|---|---|---|---|
+| Performance | 81 | **96** | 98 | **100** |
+| Accessibility | 96 | **100** | 96 | **100** |
+| Best Practices | 96 | **100** | 96 | **100** |
+| SEO | 100 | 100 | 100 | 100 |
+| LCP | 4.7 s | **2.1 s** | 1.0 s | **0.4 s** |
+| FCP | 1.6 s | 1.3 s | 0.6 s | 0.3 s |
+| TBT | 110 ms | 80 ms | 0 ms | 0 ms |
+| CLS | 0.008 | **0** | 0.011 | **0** |
+| Page weight | 1,277 KiB | **186 KiB** | 1,277 KiB | **172 KiB** |
+
+**Speed Index is unchanged, not improved.** It was 3.0 s before and measured
+4.1 s, 2.3 s and 3.9 s across three runs after. That spread is wider than the
+difference being measured, so the honest reading is "flat and noisy" rather
+than either a gain or a regression. Mobile performance across those same three
+runs was 96, 99 and 98.
+
+### Remaining performance items (all minor)
+
+- `unused-javascript` and `legacy-javascript`, roughly 33 KiB combined. This is
+  Next.js framework and polyfill code, not application code, so it needs a
+  framework upgrade rather than a local fix.
+- `uses-long-cache-ttl` flags one resource, `/_vercel/insights/script.js`, which
+  Vercel serves and we do not control.
+- `uses-responsive-images` still wants about 12 KiB, which is the gap between
+  the 2x AVIF and the exact rendered size. Not worth another breakpoint.
 
 ### Verified fixed
 
@@ -338,6 +351,16 @@ excluded. `noindex` requires the crawler to fetch the file, which is why the
 two directives are mutually defeating. The header reliably keeps it out of the
 index, which is what the decision was actually aiming at. Say the word if you
 would rather have the literal `Disallow` instead.
+
+### Branch note
+
+`origin/develop` is a parallel multi-page v2.0 of the site (routes for /cv,
+/goals, /photography, /projects, plus a theme toggle and its own robots.ts,
+sitemap.ts and JsonLd.tsx). It was last touched 2026-05-10 and has diverged
+from main by 15 commits one way and 21 the other. Confirmed abandoned on
+2026-09-24, so this work targets `main` only. If it is ever revived, the SEO
+work here will need re-applying on top of it and the single-page assumption in
+this plan will no longer hold.
 
 ### Not done
 
