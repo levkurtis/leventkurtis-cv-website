@@ -9,11 +9,22 @@ export default function Hero() {
       <div className="max-w-4xl mx-auto text-center relative z-10">
         {/* Profile Photo */}
         <div className="mb-6 flex justify-center">
-          <img
-            src="/photo.jpg"
-            alt="Levent Kurtis"
-            className="w-44 h-44 sm:w-52 sm:h-52 rounded-full object-cover border-3 border-accent shadow-lg shadow-accent/20"
-          />
+          <picture>
+            <source
+              type="image/avif"
+              srcSet="/photo-234.avif 1x, /photo-468.avif 2x"
+            />
+            <img
+              src="/photo-468.jpg"
+              srcSet="/photo-234.jpg 1x, /photo-468.jpg 2x"
+              alt="Levent Kurtis, Senior Business Architecture Analyst at Accenture"
+              width={234}
+              height={234}
+              fetchPriority="high"
+              decoding="async"
+              className="w-44 h-44 sm:w-52 sm:h-52 rounded-full object-cover border-3 border-accent shadow-lg shadow-accent/20"
+            />
+          </picture>
         </div>
 
         {/* Name and Title */}

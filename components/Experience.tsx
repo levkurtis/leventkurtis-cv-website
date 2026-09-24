@@ -1,7 +1,3 @@
-'use client'
-
-import { useState } from 'react'
-
 interface Role {
   title: string
   period: string
@@ -112,35 +108,21 @@ const experiences: Job[] = [
 ]
 
 export default function Experience() {
-  const [expandedJobs, setExpandedJobs] = useState<Record<string, boolean>>({
-    'Accenture': true,
-  })
-  const [showInitiatives, setShowInitiatives] = useState(false)
-
-  const toggleJob = (company: string) => {
-    setExpandedJobs((prev) => ({
-      ...prev,
-      [company]: !prev[company],
-    }))
-  }
-
   return (
     <section id="experience" className="py-20 px-4">
       <div className="max-w-4xl mx-auto">
         <h2 className="text-3xl font-bold mb-12 text-center">
-          <span className="text-accent">#</span> Work Experience
+          <span className="text-accent" aria-hidden="true">#</span> Work Experience
         </h2>
 
         <div className="space-y-6">
           {experiences.map((job) => (
-            <div
+            <details
               key={job.company}
-              className="bg-card border border-border rounded-xl overflow-hidden"
+              open={job.company === 'Accenture'}
+              className="group bg-card border border-border rounded-xl overflow-hidden"
             >
-              <button
-                onClick={() => toggleJob(job.company)}
-                className="w-full px-6 py-4 flex items-center justify-between hover:bg-card-hover transition-colors duration-200"
-              >
+              <summary className="px-6 py-4 flex items-center justify-between gap-4 cursor-pointer hover:bg-card-hover transition-colors duration-200 list-none [&::-webkit-details-marker]:hidden">
                 <div className="text-left">
                   <h3 className="text-xl font-semibold">{job.company}</h3>
                   <p className="text-sm text-muted">
@@ -148,77 +130,68 @@ export default function Experience() {
                   </p>
                 </div>
                 <svg
-                  className={`w-5 h-5 text-muted transition-transform duration-200 ${
-                    expandedJobs[job.company] ? 'rotate-180' : ''
-                  }`}
+                  className="w-5 h-5 shrink-0 text-muted transition-transform duration-200 group-open:rotate-180"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
+                  aria-hidden="true"
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
-              </button>
+              </summary>
 
-              {expandedJobs[job.company] && (
-                <div className="px-6 pb-6 space-y-6">
-                  {job.roles.map((role, idx) => (
-                    <div key={idx} className="border-l-2 border-accent pl-4">
-                      <div className="flex flex-wrap items-center gap-2 mb-2">
-                        <h4 className="font-semibold text-accent">{role.title}</h4>
-                        <span className="text-sm text-muted">• {role.period}</span>
-                      </div>
-                      <p className="text-sm text-foreground/80 mb-3">{role.description}</p>
-                      <ul className="space-y-2">
-                        {role.achievements.map((achievement, aIdx) => (
-                          <li key={aIdx} className="text-sm text-foreground/70 flex">
-                            <span className="text-accent mr-2">›</span>
-                            <span>{achievement}</span>
-                          </li>
-                        ))}
-                      </ul>
+              <div className="px-6 pb-6 space-y-6">
+                {job.roles.map((role, idx) => (
+                  <div key={idx} className="border-l-2 border-accent pl-4">
+                    <div className="flex flex-wrap items-center gap-2 mb-2">
+                      <h4 className="font-semibold text-accent-text">{role.title}</h4>
+                      <span className="text-sm text-muted">• {role.period}</span>
                     </div>
-                  ))}
+                    <p className="text-sm text-foreground/80 mb-3">{role.description}</p>
+                    <ul className="space-y-2">
+                      {role.achievements.map((achievement, aIdx) => (
+                        <li key={aIdx} className="text-sm text-foreground/70 flex">
+                          <span className="text-accent mr-2" aria-hidden="true">›</span>
+                          <span>{achievement}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
 
-                  {/* Internal Initiatives - Only for Accenture */}
-                  {job.internalInitiatives && (
-                    <div className="border-l-2 border-accent/50 pl-4 mt-6">
-                      <button
-                        onClick={() => setShowInitiatives(!showInitiatives)}
-                        className="flex items-center gap-2 mb-3 group"
+                {/* Internal Initiatives - Only for Accenture */}
+                {job.internalInitiatives && (
+                  <details className="group/init border-l-2 border-accent/50 pl-4 mt-6">
+                    <summary className="flex items-center gap-2 mb-3 cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+                      <h4 className="font-semibold text-accent-text">
+                        Internal Initiatives
+                      </h4>
+                      <span className="text-xs text-muted bg-background/50 px-2 py-0.5 rounded">
+                        Leadership, D&I, Community
+                      </span>
+                      <svg
+                        className="w-4 h-4 text-muted transition-transform duration-200 group-open/init:rotate-180"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
                       >
-                        <h4 className="font-semibold text-accent/80 group-hover:text-accent transition-colors">
-                          Internal Initiatives
-                        </h4>
-                        <span className="text-xs text-muted bg-background/50 px-2 py-0.5 rounded">
-                          Leadership, D&I, Community
-                        </span>
-                        <svg
-                          className={`w-4 h-4 text-muted transition-transform duration-200 ${
-                            showInitiatives ? 'rotate-180' : ''
-                          }`}
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </svg>
-                      </button>
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </summary>
 
-                      {showInitiatives && (
-                        <ul className="space-y-2">
-                          {job.internalInitiatives.map((initiative, idx) => (
-                            <li key={idx} className="text-sm text-foreground/70 flex">
-                              <span className="text-accent/70 mr-2">›</span>
-                              <span>{initiative}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
+                    <ul className="space-y-2">
+                      {job.internalInitiatives.map((initiative, idx) => (
+                        <li key={idx} className="text-sm text-foreground/70 flex">
+                          <span className="text-accent mr-2" aria-hidden="true">›</span>
+                          <span>{initiative}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </details>
+                )}
+              </div>
+            </details>
           ))}
         </div>
       </div>

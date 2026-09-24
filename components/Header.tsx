@@ -15,10 +15,26 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => {
+    let ticking = false
+
+    // Passive + rAF-throttled. setIsScrolled with an unchanged value is a no-op
+    // in React, so this only re-renders on the two transitions rather than on
+    // every scroll event.
+    const update = () => {
       setIsScrolled(window.scrollY > 50)
+      ticking = false
     }
-    window.addEventListener('scroll', handleScroll)
+
+    const handleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(update)
+        ticking = true
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    update()
+
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 

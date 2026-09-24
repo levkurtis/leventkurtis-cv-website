@@ -3,7 +3,7 @@ export default function Education() {
     <section id="education" className="py-20 px-4">
       <div className="max-w-4xl mx-auto">
         <h2 className="text-3xl font-bold mb-12 text-center">
-          <span className="text-accent">#</span> Education
+          <span className="text-accent" aria-hidden="true">#</span> Education
         </h2>
 
         <div className="bg-card border border-border rounded-xl p-8">
@@ -12,7 +12,7 @@ export default function Education() {
               <h3 className="text-xl font-semibold">
                 MSc in Business Administration and E-business
               </h3>
-              <p className="text-accent font-medium">Copenhagen Business School</p>
+              <p className="text-accent-text font-medium">Copenhagen Business School</p>
             </div>
             <div className="flex items-center gap-2 text-muted">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

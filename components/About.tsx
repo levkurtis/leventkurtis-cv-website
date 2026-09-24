@@ -3,7 +3,7 @@ export default function About() {
     <section id="about" className="py-20 px-4">
       <div className="max-w-4xl mx-auto">
         <h2 className="text-3xl font-bold mb-8 text-center">
-          <span className="text-accent">#</span> About Me
+          <span className="text-accent" aria-hidden="true">#</span> About Me
         </h2>
 
         <div className="bg-card border border-border rounded-xl p-8">

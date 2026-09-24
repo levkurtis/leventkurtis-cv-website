@@ -1,0 +1,48 @@
+# Levent Kurtis
+
+> Data & AI consultant and team lead at Accenture in Copenhagen, Denmark.
+> Works at the intersection of Data & AI, people, and delivery.
+
+## Summary
+
+Levent Kurtis is a Senior Business Architecture Analyst at Accenture in
+Copenhagen. He advises clients on data-driven transformation and implements the
+solutions that follow, covering data migration, data quality frameworks,
+analytics, automation, and ML/AI adoption. He combines hands-on technical work
+with a digital business background, bridging technical teams and executive
+stakeholders.
+
+## Current role
+
+- **Data Migration Stream Lead, Accenture** (06/2026 to present). Leads the
+  Dynamics 365 data migration workstream on a large-scale public sector
+  programme, acting as liaison between the client and the offshore ETL team, and
+  leading a team of 3 consultants.
+
+## Previous roles
+
+- **Team Lead, Accenture** (01/2025 to 05/2026)
+- **Data & AI Consultant, Accenture** (09/2023 to 12/2024)
+- **Researcher, Marcher Markholt** (11/2021 to 08/2023)
+- **E-commerce Assistant, Accord** (12/2020 to 10/2021)
+- **E-commerce Assistant, Retail Brands** (08/2019 to 08/2020)
+
+## Education
+
+MSc in Business Administration and E-business, Copenhagen Business School.
+
+## Core skills
+
+SQL, Python, Databricks, Power BI, data analysis, automation, KNIME, LM Studio,
+Ollama, agile delivery, SAFe, Azure DevOps, PI planning, team leadership,
+stakeholder management, digital transformation.
+
+## Languages
+
+Danish (native), English (bilingual), Turkish (bilingual), Macedonian (full).
+
+## Links
+
+- Website: https://leventkurtis.com
+- LinkedIn: https://www.linkedin.com/in/leventkurtis
+- GitHub: https://github.com/levkurtis
